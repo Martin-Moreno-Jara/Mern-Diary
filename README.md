@@ -8,14 +8,7 @@ First the Backend Configuration
 A backend folder must be created inside the main folder. inside this, there must bee a server.js file which is the api itself. However, before doing anything further we must create a package.json file by using npm command as follows
 
 `npm init -y`
-
-
 The -y automatically sets the npm configuration. Then we need to install express and nodemon (if you wish that changes to the server.js file automatically restart the server, which is quite convenient)
-
 `npm install express`
-
-
 `npm install nodemon`
-
-
 :)
