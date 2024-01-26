@@ -1,6 +1,13 @@
 const express = require('express');
+require('dotenv').config()
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT;
+
+//MIDDLEWARE
+app.use((req,res,next)=>{
+    console.log(req.path,req.method);
+    next()
+})
 
 //PORT LISTENING CONFIGURATION
 app.listen(PORT,()=>{console.log(`Listening to port ${PORT} :)`)})
