@@ -19,4 +19,13 @@ The -y automatically sets the npm configuration. Then we need to install express
 `npm install nodemon`
 
 
+It is also useful to handle some information in an .env file, that won't be send to the repository, because it is in the .gitignore file. For this there has to be a .env file in which there is sensitive information such as db connection strings or port numbers. In order for this to work you'll have to install dotenv
+
+
+`npm install dotenv`
+
+
+Then you'll have to require dotenv in the server.js file and use the configure() method right after. Then the process object will be available and you can use the variables like process.env.VARIABLE
+
+
 :)
