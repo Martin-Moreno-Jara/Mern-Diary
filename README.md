@@ -27,5 +27,7 @@ It is also useful to handle some information in an .env file, that won't be send
 
 Then you'll have to require dotenv in the server.js file and use the configure() method right after. Then the process object will be available and you can use the variables like process.env.VARIABLE
 
+For the routes, they can be created inside the server.js file itself, but it seems it would be better to create a separate file for them. However the app variable containing express() method is required to create the routes. To fix this, we must require express in the routes file, and asing a variable to express.Router(), that way we can create endpoints using that variable. But we must add this const variable in module.exports, to import it in the server.js file. Then we can use app.use('route',router) to make it work. The first parameter is the default route we want the other routes in the file to follow.
+
 
 :)
