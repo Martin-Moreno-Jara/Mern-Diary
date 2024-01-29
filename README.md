@@ -29,5 +29,14 @@ Then you'll have to require dotenv in the server.js file and use the configure()
 
 For the routes, they can be created inside the server.js file itself, but it seems it would be better to create a separate file for them. However the app variable containing express() method is required to create the routes. To fix this, we must require express in the routes file, and asing a variable to express.Router(), that way we can create endpoints using that variable. But we must add this const variable in module.exports, to import it in the server.js file. Then we can use app.use('route',router) to make it work. The first parameter is the default route we want the other routes in the file to follow.
 
+### DB Connection
+This project will use MongoDB Atlas. So the connection URI will be in the .env file, and then the mongoose package must be installed
+
+
+`npm install mongoose`
+
+
+Then we will require the mongoose package in the server.js file and use the const it is stored in to call the method connect(dbURI), this returns a promise, so a .then() block will be necessary.
+
 
 :)
