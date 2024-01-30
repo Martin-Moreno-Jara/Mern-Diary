@@ -1,4 +1,5 @@
 const express = require('express');
+const entries = require('../models/entryModel')
 const router = express.Router();
 
 //GET ROUTES
@@ -12,7 +13,15 @@ router.get('/:id',(req,res)=>{
 })
 
 //POST ROUTES
-router.post('/',(req,res)=>{
+router.post('/', async (req,res)=>{
+    const {title,date,description} = req.body;
+    try{
+        const entry = await entries.create({title,date,description})
+        res.status(200).json(entry);
+    }
+    catch(error){
+        res.status(400).json({error:`couldn't create ${error}`})
+    }
     res.json({mg:'post a new entry'})
 })
 
