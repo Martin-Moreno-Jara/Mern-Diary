@@ -39,4 +39,7 @@ This project will use MongoDB Atlas. So the connection URI will be in the .env f
 Then we will require the mongoose package in the server.js file and use the const it is stored in to call the method connect(dbURI), this returns a promise, so a .then() block will be necessary.
 
 
+After that, schemas can be used in order to add a degree of strictness that mongo lacks itself. For this, we will create a new folder called models, and within a js file which will require moongose, then we use the moongose.Schema to create a JSON object that describes the structure of data we want. Then we have to export it with module.exports 
+
+
 :)
