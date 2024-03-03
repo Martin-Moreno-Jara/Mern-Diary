@@ -6,6 +6,7 @@ const {
   getAllEntries,
   getSingleEntry,
   deleteEntry,
+  updateEntry,
 } = require("../controllers/entryController");
 
 //GET ROUTES
@@ -22,8 +23,6 @@ router.post("/", createEntry);
 router.delete("/:id", deleteEntry);
 
 //PATCH ROUTES
-router.patch("/:id", (req, res) => {
-  res.json({ mg: `update entry id ${req.params.id}` });
-});
+router.patch("/:id", updateEntry);
 
 module.exports = router;
