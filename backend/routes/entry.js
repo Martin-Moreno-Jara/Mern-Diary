@@ -1,28 +1,30 @@
-const express = require('express');
-const entries = require('../models/entryModel')
+const express = require("express");
+const entries = require("../models/entryModel");
 const router = express.Router();
-const { createEntry, getAllEntries } = require('../controllers/entryController')
+const {
+  createEntry,
+  getAllEntries,
+  getSingleEntry,
+} = require("../controllers/entryController");
 
 //GET ROUTES
-    //get all entries
-router.get('/',getAllEntries)
+//get all entries
+router.get("/", getAllEntries);
 
-    //get a single route
-router.get('/:id',(req,res)=>{
-    res.json({mg:`retrieving single entry id ${req.params.id}`})
-})
+//get a single route
+router.get("/:id", getSingleEntry);
 
 //POST ROUTES
-router.post('/',createEntry)
+router.post("/", createEntry);
 
 //DELETE ROUTES
-router.delete('/:id',(req,res)=>{
-    res.json({mg:`delete entry id ${req.params.id}`})
-})
+router.delete("/:id", (req, res) => {
+  res.json({ mg: `delete entry id ${req.params.id}` });
+});
 
-//PATCH ROUTES  
-router.patch('/:id',(req,res)=>{
-    res.json({mg:`update entry id ${req.params.id}`})
-})
+//PATCH ROUTES
+router.patch("/:id", (req, res) => {
+  res.json({ mg: `update entry id ${req.params.id}` });
+});
 
-module.exports = router
+module.exports = router;
