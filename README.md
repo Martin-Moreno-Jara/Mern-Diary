@@ -42,7 +42,11 @@ Then we will require the mongoose package in the server.js file and use the cons
 
 
 After that, schemas can be used in order to add a degree of strictness that mongo lacks itself. For this, we will create a new folder called models, and within a js file which will require moongose, then we use the moongose.Schema to create a JSON object that describes the structure of data we want. Then we have to export it with module.exports 
+
+
 ---
+
+
 ## FrontEnd
 
 :)
