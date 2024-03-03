@@ -1,4 +1,5 @@
 const entriesModel = require("../models/entryModel");
+const mongoose = require("mongoose");
 
 //GET ALL ENTRIES
 const getAllEntries = async (req, res) => {
@@ -9,6 +10,11 @@ const getAllEntries = async (req, res) => {
 //GET A SINGLE ENTRY
 const getSingleEntry = async (req, res) => {
   const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res
+      .status(404)
+      .json({ error: "Not found. In fact, id ain't even valid" });
+  }
   const entry = await entriesModel.findById(id);
 
   if (!entry) {
