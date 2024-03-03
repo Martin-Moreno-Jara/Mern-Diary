@@ -41,12 +41,13 @@ const deleteEntry = async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Not found, not valid id" });
   }
-  try {
-    await entriesModel.deleteOne({ _id: `${id}` });
-    res.status(200).json({ deletion: `entry with id: ${id} has been deleted` });
-  } catch {
-    res.status(404).json({ error: "Not found" });
+  const deletion = await entriesModel.findOneAndDelete({ _id: `${id}` });
+  if (!deletion) {
+    return res.status(404).json({ error: "Not found" });
   }
+  res
+    .status(200)
+    .json({ deleteConfirmation: `Entry with id ${id} was deleted` });
 };
 
 //UPDATE ENTRY
