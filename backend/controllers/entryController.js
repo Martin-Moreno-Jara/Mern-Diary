@@ -36,6 +36,18 @@ const createEntry = async (req, res) => {
 };
 
 //DELETE ENTRY
+const deleteEntry = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "Not found, not valid id" });
+  }
+  try {
+    await entriesModel.deleteOne({ _id: `${id}` });
+    res.status(200).json({ deletion: `entry with id: ${id} has been deleted` });
+  } catch {
+    res.status(404).json({ error: "Not found" });
+  }
+};
 
 //UPDATE ENTRY
 
@@ -43,4 +55,5 @@ module.exports = {
   createEntry,
   getAllEntries,
   getSingleEntry,
+  deleteEntry,
 };
