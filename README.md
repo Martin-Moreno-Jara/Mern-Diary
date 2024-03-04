@@ -4,7 +4,7 @@ This project is intented as a practice project for learning how to use the MERN 
 As mentioned above, this project will use the MERN technologies, that is, MongoDB as the database management system, NodeJS alongside Express to create the API backend, and React to create the app's frontend
 ---
 First the Backend Configuration
-## Backend
+## BackEnd
 A backend folder must be created inside the main folder. inside this, there must bee a server.js file which is the api itself. However, before doing anything further we must create a package.json file by using npm command as follows
 
 `npm init -y`
@@ -29,6 +29,8 @@ Then you'll have to require dotenv in the server.js file and use the configure()
 
 For the routes, they can be created inside the server.js file itself, but it seems it would be better to create a separate file for them. However the app variable containing express() method is required to create the routes. To fix this, we must require express in the routes file, and asing a variable to express.Router(), that way we can create endpoints using that variable. But we must add this const variable in module.exports, to import it in the server.js file. Then we can use app.use('route',router) to make it work. The first parameter is the default route we want the other routes in the file to follow.
 
+Things can get quite messy if all the backend endpoints are handled as is. In order to solve that, we make use of controllers, that is, creating another folder with a js file in it that will contain the hard logic behind each endpoint. To accomplish this we must use the router that comes in the mongoose package. Then we make the endpoint code using the router, and export each enpoint with module.exports. This way the endpoints in the routes.js file will be shorter and simpler to read, for they only reference the route and the controller method asociated with it. It makes it a little more organized, if you will.
+
 ### DB Connection
 This project will use MongoDB Atlas. So the connection URI will be in the .env file, and then the mongoose package must be installed
 
@@ -41,5 +43,10 @@ Then we will require the mongoose package in the server.js file and use the cons
 
 After that, schemas can be used in order to add a degree of strictness that mongo lacks itself. For this, we will create a new folder called models, and within a js file which will require moongose, then we use the moongose.Schema to create a JSON object that describes the structure of data we want. Then we have to export it with module.exports 
 
+
+---
+
+
+## FrontEnd
 
 :)
