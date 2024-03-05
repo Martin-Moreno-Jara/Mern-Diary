@@ -48,4 +48,10 @@ As usual when creating a React app, we need to use the command:
 
 This will create a folder with a react app within it. But it has a lot of filler, so we'll be deleting most of it.
 
+Then we need to install a package to manage the different pages we'll be displaying. This is react-router-dom
+
+`npm install react-router-dom`
+
+Once that's done, we use the BrowserRouter, Routes, and Route from the react-router-dom to configure the pages. To organize this better, it is advised to create a folder that contains the pages as react components, separately from the components folder
+
 :)
