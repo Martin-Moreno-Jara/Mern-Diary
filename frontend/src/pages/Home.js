@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import EntryDetail from "../components/EntryDetails";
 
 const Home = () => {
   const [entry, setEntry] = useState(null);
-  const ar = [{ asd: "213" }, { asd: "2qe" }];
 
   useEffect(() => {
     const fetchEntries = async () => {
@@ -21,9 +21,12 @@ const Home = () => {
       <div className="entries">
         {entry &&
           entry.map((EachEntry) => (
-            <p key={EachEntry._id}>{EachEntry.title}</p>
+            <EntryDetail
+              title={EachEntry.title}
+              description={EachEntry.description}
+              date={EachEntry.date}
+            ></EntryDetail>
           ))}
-        {console.log(entry)}
       </div>
     </div>
   );
