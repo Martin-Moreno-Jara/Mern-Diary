@@ -54,4 +54,8 @@ Then we need to install a package to manage the different pages we'll be display
 
 Once that's done, we use the BrowserRouter, Routes, and Route from the react-router-dom to configure the pages. To organize this better, it is advised to create a folder that contains the pages as react components, separately from the components folder
 
+In order to keep the app in sync when adding or deleting an entry, that is, the new entry is shown without needing to reload the page, we need to use the context tool of react. For this we create a new folder for the context an inside it we import createContext and UseReducer from react. Then we store createContext() in a const, create the UseReducer hook that is made up of an array of a variable and a function [state, dispatch] (dispatch function takes two paramenters: an object {type:'any'}) describing the type of action we want to do, this is custombizable, and an array containing the information.Then, useReducer(callback,{initState:null}) that takes a callback function and an object with the initial state, obviously the callback function should be defined, it should contain a switch in regard to the action's type.
+
+Lastly, we create a functional component, but using as main container the const we had assigned the createContext() function, and calling Provider, like if const con = createContext(), then <con.Provider><con.Provider/>. We export each function separately. Then we need to suround the whole app with the functional component, for this we import the component in the index.js file and simply suround the app component.
+
 :)
