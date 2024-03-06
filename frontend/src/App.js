@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Test from "./pages/Test";
 //components
 import Navbar from "./components/Navbar";
-import EntryDetail from "./components/EntryDetails";
 
 function App() {
   return (

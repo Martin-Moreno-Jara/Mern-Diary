@@ -1,9 +1,9 @@
 import "../stylesheets/EntryDetail.css";
 
-const EntryDetail = ({ key, entry }) => {
+const EntryDetail = ({ entry }) => {
   return (
     <div className="entryDetail">
-      <h4>{entry.title}</h4>
+      <h3>{entry.title}</h3>
 
       <div className="details">
         <p>

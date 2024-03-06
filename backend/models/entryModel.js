@@ -1,22 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
-const entrySchema = new Schema({
+const entrySchema = new Schema(
+  {
     title: {
-        type:String,
-        required:true
+      type: String,
+      required: true,
     },
-    date:{
-        type: Date,
-        default:Date.now,
-        required:true
+    date: {
+      type: Date,
+      default: Date.now,
+      required: false,
     },
-    description:{
-        type:String,
-        required:true
-    }
+    description: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true});
-
-module.exports = mongoose.model('entries',entrySchema)
+module.exports = mongoose.model("entries", entrySchema);

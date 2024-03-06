@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import EntryDetail from "../components/EntryDetails";
 import "../stylesheets/Home.css";
+import EntryForm from "../components/EntryForm";
 
 const Home = () => {
   const [entry, setEntry] = useState(null);
@@ -23,6 +24,9 @@ const Home = () => {
           entry.map((EachEntry) => (
             <EntryDetail key={EachEntry._id} entry={EachEntry}></EntryDetail>
           ))}
+      </div>
+      <div className="form-div">
+        <EntryForm></EntryForm>
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ const createEntry = async (req, res) => {
     const entry = await entriesModel.create({ title, date, description });
     res.status(200).json(entry);
   } catch (error) {
-    res.status(400).json({ error: `couldn't create ${error}` });
+    res.status(400).json({ error: ` ${error}` });
   }
 };
 
