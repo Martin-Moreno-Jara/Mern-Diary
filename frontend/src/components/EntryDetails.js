@@ -1,13 +1,20 @@
 import "../stylesheets/EntryDetail.css";
 
-const EntryDetail = ({ title, description, date }) => {
+const EntryDetail = ({ key, entry }) => {
   return (
     <div className="entryDetail">
-      <div className="title">{title}</div>
+      <h4>{entry.title}</h4>
+
       <div className="details">
-        {description}
-        <br />
-        {date}
+        <p>
+          <strong>Date: </strong>
+          {entry.date}
+        </p>
+        <p>
+          <strong>Description: </strong>
+          {entry.description}
+        </p>
+        <p>{entry.createdAt}</p>
       </div>
     </div>
   );

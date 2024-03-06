@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import EntryDetail from "../components/EntryDetails";
+import "../stylesheets/Home.css";
 
 const Home = () => {
   const [entry, setEntry] = useState(null);
@@ -17,15 +18,10 @@ const Home = () => {
   }, []);
   return (
     <div className="home">
-      <h2>Welcome Home</h2>
       <div className="entries">
         {entry &&
           entry.map((EachEntry) => (
-            <EntryDetail
-              title={EachEntry.title}
-              description={EachEntry.description}
-              date={EachEntry.date}
-            ></EntryDetail>
+            <EntryDetail key={EachEntry._id} entry={EachEntry}></EntryDetail>
           ))}
       </div>
     </div>
