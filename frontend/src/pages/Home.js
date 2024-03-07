@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import EntryDetail from "../components/EntryDetails";
 import "../stylesheets/Home.css";
 import EntryForm from "../components/EntryForm";
+import { useEntryContext } from "../hooks/useEntryContext";
 
 const Home = () => {
-  const [entry, setEntry] = useState(null);
+  const { entries, dispatch } = useEntryContext();
 
   useEffect(() => {
     const fetchEntries = async () => {
       const response = await fetch("/api/entry");
       const json = await response.json();
       if (response.ok) {
-        setEntry(json);
+        dispatch({ type: "SET_ENTRIES", payload: json });
       }
     };
 
@@ -20,8 +21,8 @@ const Home = () => {
   return (
     <div className="home">
       <div className="entries">
-        {entry &&
-          entry.map((EachEntry) => (
+        {entries &&
+          entries.map((EachEntry) => (
             <EntryDetail key={EachEntry._id} entry={EachEntry}></EntryDetail>
           ))}
       </div>

@@ -13,13 +13,12 @@ export const EntryReducer = (state, action) => {
   }
 };
 
-const [state, dispatch] = useReducer(EntryReducer, {
-  entries: null,
-});
-
 export const EntryContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(EntryReducer, {
+    entries: null,
+  });
   return (
-    <EntryContext.Provider value={(state, dispatch)}>
+    <EntryContext.Provider value={{ ...state, dispatch }}>
       {children}
     </EntryContext.Provider>
   );

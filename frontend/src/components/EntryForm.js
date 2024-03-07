@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useEntryContext } from "../hooks/useEntryContext";
 import "../stylesheets/EntryForm.css";
 
 const EntryForm = () => {
+  const { dispatch } = useEntryContext();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
@@ -27,6 +29,7 @@ const EntryForm = () => {
       setTitle("");
       setDescription("");
       console.log("entry added", json);
+      dispatch({ type: "CREATE_ENTRY", payload: json });
     }
   };
 
