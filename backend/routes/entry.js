@@ -1,5 +1,4 @@
 const express = require("express");
-const entries = require("../models/entryModel");
 const router = express.Router();
 const {
   createEntry,

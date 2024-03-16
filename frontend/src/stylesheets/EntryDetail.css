@@ -2,7 +2,7 @@
   background: white;
   border-radius: 4px;
   width: 500px;
-  height: 200px;
+  height: 150px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
@@ -16,7 +16,6 @@
 }
 
 .entryDetail p {
-  margin: 0;
   font-size: 0.9em;
   color: #555;
 }
@@ -30,4 +29,14 @@
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+
+.details {
+  display: grid;
+  height: 95%;
+}
+
+#date {
+  align-self: flex-end;
+  text-justify: center;
 }

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Francois+One&display=swap");
+
 :root {
   --primary: #1aac83;
   --error: #e7195a;
@@ -5,6 +7,7 @@
 body {
   background: #f1f1f1;
   margin: 0;
+  font-family: "Francois One";
 }
 
 header {

@@ -8,7 +8,7 @@ const EntryForm = () => {
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
-  const handleSumbit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const entry = { title, description };
@@ -34,7 +34,7 @@ const EntryForm = () => {
   };
 
   return (
-    <form className="create" onSubmit={handleSumbit}>
+    <form className="create" onSubmit={handleSubmit}>
       <h3>Add a new entry to your diary</h3>
       <label>Entry Title:</label>
       <input

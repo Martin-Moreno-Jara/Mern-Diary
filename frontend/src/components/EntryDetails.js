@@ -7,14 +7,13 @@ const EntryDetail = ({ entry }) => {
 
       <div className="details">
         <p>
-          <strong>Date: </strong>
-          {entry.date}
-        </p>
-        <p>
           <strong>Description: </strong>
           {entry.description}
         </p>
-        <p>{entry.createdAt}</p>
+        <p id="date">
+          <strong>Date: </strong>
+          {entry.date}
+        </p>
       </div>
     </div>
   );
