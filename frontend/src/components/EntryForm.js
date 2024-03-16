@@ -7,6 +7,7 @@ const EntryForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,12 +24,13 @@ const EntryForm = () => {
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
       setError(null);
       setTitle("");
       setDescription("");
-      console.log("entry added", json);
+      setEmptyFields([]);
       dispatch({ type: "CREATE_ENTRY", payload: json });
     }
   };
@@ -43,6 +45,7 @@ const EntryForm = () => {
           setTitle(e.target.value);
         }}
         value={title}
+        className={emptyFields.includes("title") ? "error" : ""}
       ></input>
 
       <label>Entry description: </label>
@@ -52,6 +55,7 @@ const EntryForm = () => {
           setDescription(e.target.value);
         }}
         value={description}
+        className={emptyFields.includes("description") ? "error" : ""}
       ></input>
 
       <button>Add Entry</button>

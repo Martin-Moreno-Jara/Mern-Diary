@@ -27,6 +27,19 @@ const getSingleEntry = async (req, res) => {
 //CREATE NEW ENTRY
 const createEntry = async (req, res) => {
   const { title, date, description } = req.body;
+  let emptyFields = [];
+  if (!title) {
+    emptyFields.push("title");
+  }
+  if (!description) {
+    emptyFields.push("description");
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Fill in all the fields", emptyFields });
+  }
+
   try {
     const entry = await entriesModel.create({ title, date, description });
     res.status(200).json(entry);
