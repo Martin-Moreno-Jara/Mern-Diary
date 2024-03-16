@@ -58,4 +58,6 @@ In order to keep the app in sync when adding or deleting an entry, that is, the 
 
 Lastly, we create a functional component, but using as main container the const we had assigned the createContext() function, and calling Provider, like if const con = createContext(), then <con.Provider><con.Provider/>. We export each function separately. Then we need to suround the whole app with the functional component, for this we import the component in the index.js file and simply suround the app component.
 
+Also, to better depict the dates, you can use the date-fns package
+
 :)

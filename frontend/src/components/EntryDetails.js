@@ -1,5 +1,6 @@
 import "../stylesheets/EntryDetail.css";
 import { useEntryContext } from "../hooks/useEntryContext";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const EntryDetail = ({ entry }) => {
   const { dispatch } = useEntryContext();
@@ -27,7 +28,7 @@ const EntryDetail = ({ entry }) => {
         </p>
         <p id="date">
           <strong>Date: </strong>
-          {entry.date}
+          {formatDistanceToNow(new Date(entry.createdAt), { addSuffix: true })}
         </p>
       </div>
       <span className="material-symbols-outlined" onClick={handleClick}>

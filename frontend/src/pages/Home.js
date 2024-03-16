@@ -17,7 +17,7 @@ const Home = () => {
     };
 
     fetchEntries();
-  }, []);
+  }, [dispatch]);
   return (
     <div className="home">
       <div className="entries">
