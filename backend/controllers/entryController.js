@@ -45,9 +45,7 @@ const deleteEntry = async (req, res) => {
   if (!deletion) {
     return res.status(404).json({ error: "Not found" });
   }
-  res
-    .status(200)
-    .json({ deleteConfirmation: `Entry with id ${id} was deleted` });
+  res.status(200).json(deletion);
 };
 
 //UPDATE ENTRY

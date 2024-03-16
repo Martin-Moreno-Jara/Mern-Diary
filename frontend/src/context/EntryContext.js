@@ -8,6 +8,11 @@ export const EntryReducer = (state, action) => {
       return { entries: action.payload };
     case "CREATE_ENTRY":
       return { entries: [action.payload, ...state.entries] };
+    case "DELETE_ENTRY":
+      console.log(action.payload);
+      return {
+        entries: state.entries.filter((ent) => ent._id !== action.payload._id),
+      };
     default:
       return state;
   }

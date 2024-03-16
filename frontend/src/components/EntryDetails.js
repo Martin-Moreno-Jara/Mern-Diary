@@ -1,6 +1,21 @@
 import "../stylesheets/EntryDetail.css";
+import { useEntryContext } from "../hooks/useEntryContext";
 
 const EntryDetail = ({ entry }) => {
+  const { dispatch } = useEntryContext();
+
+  const handleClick = async () => {
+    const response = await fetch(`/api/entry/${entry._id}`, {
+      method: "DELETE",
+    });
+
+    const json = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: "DELETE_ENTRY", payload: json });
+    }
+  };
+
   return (
     <div className="entryDetail">
       <h3>{entry.title}</h3>
@@ -15,6 +30,7 @@ const EntryDetail = ({ entry }) => {
           {entry.date}
         </p>
       </div>
+      <span onClick={handleClick}>delete</span>
     </div>
   );
 };
