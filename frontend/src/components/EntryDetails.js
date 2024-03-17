@@ -7,7 +7,7 @@ const EntryDetail = ({ entry }) => {
 
   const handleClick = async () => {
     const response = await fetch(
-      `http://localhost:4000/api/entry/${entry._id}`,
+      `https://mern-diary-backend.onrender.com/api/entry/${entry._id}`,
       {
         method: "DELETE",
       }
