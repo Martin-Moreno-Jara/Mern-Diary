@@ -6,9 +6,12 @@ const EntryDetail = ({ entry }) => {
   const { dispatch } = useEntryContext();
 
   const handleClick = async () => {
-    const response = await fetch(`/api/entry/${entry._id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `http://localhost:4000/api/entry/${entry._id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     const json = await response.json();
 

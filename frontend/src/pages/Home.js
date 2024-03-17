@@ -9,7 +9,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchEntries = async () => {
-      const response = await fetch("/api/entry");
+      const response = await fetch("http://localhost:4000/api/entry");
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_ENTRIES", payload: json });
