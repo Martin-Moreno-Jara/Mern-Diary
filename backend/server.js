@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT;
 const dbURI = process.env.MONGO_URI;
 const entryRoutes = require("./routes/entry");
+const userRoutes = require("./routes/user");
 
 //MIDDLEWARE
 app.use(cors());
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 
 //ROUTER USE
 app.use("/api/entry", entryRoutes);
+app.use("/api/user", userRoutes);
 
 //DB CONNECTION
 mongoose
