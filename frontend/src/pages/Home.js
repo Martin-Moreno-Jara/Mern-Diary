@@ -3,15 +3,15 @@ import EntryDetail from "../components/EntryDetails";
 import "../stylesheets/Home.css";
 import EntryForm from "../components/EntryForm";
 import { useEntryContext } from "../hooks/useEntryContext";
+const devAPI = process.env.REACT_APP_DEVURL;
+const productionAPI = process.env.REACT_APP_PROURL;
 
 const Home = () => {
   const { entries, dispatch } = useEntryContext();
 
   useEffect(() => {
     const fetchEntries = async () => {
-      const response = await fetch(
-        "https://mern-diary-backend.onrender.com/api/entry"
-      );
+      const response = await fetch(`${devAPI}/api/entry`);
       const json = await response.json();
       if (response.ok) {
         dispatch({ type: "SET_ENTRIES", payload: json });

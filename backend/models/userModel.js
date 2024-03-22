@@ -9,7 +9,7 @@ const userSchema = new Schema({
     unique: true,
   },
   password: {
-    trype: String,
+    type: String,
     required: true,
   },
 });

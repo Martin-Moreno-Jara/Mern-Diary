@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useEntryContext } from "../hooks/useEntryContext";
 import "../stylesheets/EntryForm.css";
+const devAPI = process.env.REACT_APP_DEVURL;
+const productionAPI = process.env.REACT_APP_PROURL;
 
 const EntryForm = () => {
   const { dispatch } = useEntryContext();
@@ -15,14 +17,11 @@ const EntryForm = () => {
     const entry = { title, description };
     console.log(JSON.stringify(entry));
 
-    const response = await fetch(
-      "https://mern-diary-backend.onrender.com/api/entry",
-      {
-        method: "POST",
-        body: JSON.stringify(entry),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch(`${devAPI}/api/entry`, {
+      method: "POST",
+      body: JSON.stringify(entry),
+      headers: { "Content-Type": "application/json" },
+    });
 
     const json = await response.json();
     if (!response.ok) {
