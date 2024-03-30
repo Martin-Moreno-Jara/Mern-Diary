@@ -1,6 +1,6 @@
-import { createContex, useReducer } from "react";
+import { createContex, createContext, useReducer } from "react";
 
-export const authContext = createContex();
+export const authContext = createContext();
 
 export const authReducer = (state, action) => {
   switch (action.type) {
