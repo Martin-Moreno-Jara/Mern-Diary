@@ -1,6 +1,5 @@
 const entriesModel = require("../models/entryModel");
 const mongoose = require("mongoose");
-
 //GET ALL ENTRIES
 const getAllEntries = async (req, res) => {
   const entries = await entriesModel.find({}).sort({ createdAt: -1 });
