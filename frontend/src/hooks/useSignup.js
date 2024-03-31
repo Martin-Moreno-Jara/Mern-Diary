@@ -24,7 +24,10 @@ export const useSignup = () => {
       setError(json.error);
     }
     if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(json));
+      console.log("logeando");
+      await localStorage.setItem("user", JSON.stringify(json));
+      const result = await localStorage.getItem("user");
+      console.log(result);
       dispatch({ type: "LOGIN", payload: json });
       setIsLoading(false);
     }
