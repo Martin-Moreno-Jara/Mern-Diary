@@ -1,15 +1,21 @@
 import "../stylesheets/EntryDetail.css";
 import { useEntryContext } from "../hooks/useEntryContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 const devAPI = process.env.REACT_APP_DEVURL;
 const productionAPI = process.env.REACT_APP_PROURL;
 
 const EntryDetail = ({ entry }) => {
   const { dispatch } = useEntryContext();
+  const { user } = useAuthContext();
 
   const handleClick = async () => {
+    if (!user) {
+      return;
+    }
     const response = await fetch(`${devAPI}/api/entry/${entry._id}`, {
       method: "DELETE",
+      headers: { Authorization: `Bearer ${user.token}` },
     });
 
     const json = await response.json();

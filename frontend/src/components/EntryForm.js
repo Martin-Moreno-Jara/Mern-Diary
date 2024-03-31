@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEntryContext } from "../hooks/useEntryContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 import "../stylesheets/EntryForm.css";
 const devAPI = process.env.REACT_APP_DEVURL;
 const productionAPI = process.env.REACT_APP_PROURL;
@@ -11,8 +12,14 @@ const EntryForm = () => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
+  const { user } = useAuthContext();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!user) {
+      setError("You must be Logged in");
+      return;
+    }
 
     const entry = { title, description };
     console.log(JSON.stringify(entry));
@@ -20,7 +27,10 @@ const EntryForm = () => {
     const response = await fetch(`${devAPI}/api/entry`, {
       method: "POST",
       body: JSON.stringify(entry),
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
     });
 
     const json = await response.json();
