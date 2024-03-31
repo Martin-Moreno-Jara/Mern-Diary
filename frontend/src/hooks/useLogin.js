@@ -1,33 +1,32 @@
-import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-const devurl = process.env.REACT_APP_DEVURL;
+import { useState } from "react";
+const urldev = process.env.REACT_APP_DEVURL;
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
+
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
-
-    const response = await fetch(`${devurl}/api/user/signup`, {
+    const result = await fetch(`${urldev}/api/user/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
+    const json = await result.json();
 
-    const json = await response.json();
-
-    if (!response.ok) {
+    if (!result.ok) {
       setIsLoading(false);
       setError(json.error);
     }
-    if (response.ok) {
+    if (result.ok) {
+      setIsLoading(false);
       localStorage.setItem("user", JSON.stringify(json));
       dispatch({ type: "LOGIN", payload: json });
-      setIsLoading(false);
     }
   };
-  return { signup, isLoading, error };
+  return { login, isLoading, error };
 };
