@@ -2,7 +2,8 @@ const entriesModel = require("../models/entryModel");
 const mongoose = require("mongoose");
 //GET ALL ENTRIES
 const getAllEntries = async (req, res) => {
-  const entries = await entriesModel.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+  const entries = await entriesModel.find({ user_id }).sort({ createdAt: -1 });
   res.status(200).json(entries);
 };
 
@@ -40,7 +41,13 @@ const createEntry = async (req, res) => {
   }
 
   try {
-    const entry = await entriesModel.create({ title, date, description });
+    const user_id = req.user._id;
+    const entry = await entriesModel.create({
+      title,
+      date,
+      description,
+      user_id,
+    });
     res.status(200).json(entry);
   } catch (error) {
     res.status(400).json({ error: ` ${error}` });
