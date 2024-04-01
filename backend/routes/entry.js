@@ -1,4 +1,5 @@
 const express = require("express");
+const { requireAuth } = require("../middleware/requireAuth");
 const router = express.Router();
 const {
   createEntry,
@@ -7,6 +8,9 @@ const {
   deleteEntry,
   updateEntry,
 } = require("../controllers/entryController");
+
+//middleware
+router.use(requireAuth);
 
 //GET ROUTES
 //get all entries
