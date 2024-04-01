@@ -24,7 +24,7 @@ const EntryForm = () => {
     const entry = { title, description };
     console.log(JSON.stringify(entry));
 
-    const response = await fetch(`${devAPI}/api/entry`, {
+    const response = await fetch(`${productionAPI}/api/entry`, {
       method: "POST",
       body: JSON.stringify(entry),
       headers: {
