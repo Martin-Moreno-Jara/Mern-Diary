@@ -13,7 +13,7 @@ const EntryDetail = ({ entry }) => {
     if (!user) {
       return;
     }
-    const response = await fetch(`${devAPI}/api/entry/${entry._id}`, {
+    const response = await fetch(`${productionAPI}/api/entry/${entry._id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${user.token}` },
     });

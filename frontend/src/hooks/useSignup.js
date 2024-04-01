@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 const devurl = process.env.REACT_APP_DEVURL;
+const productionAPI = process.env.REACT_APP_PROURL;
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -11,7 +12,7 @@ export const useSignup = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch(`${devurl}/api/user/signup`, {
+    const response = await fetch(`${productionAPI}/api/user/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
